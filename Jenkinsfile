@@ -24,11 +24,11 @@ node {
         sh 'mvn -B -V -U -e clean package'
     }
 
-    stage('Archive') {
+    /**stage('Archive') {
         junit allowEmptyResults: true, testResults: '**/target/**/TEST*.xml'
-    }
+    }**/
 
-    stage('Deploy') {
+    /**stage('Deploy') {
         // Depends on the 'Credentials Binding Plugin'
         // (https://wiki.jenkins-ci.org/display/JENKINS/Credentials+Binding+Plugin)
         withCredentials([[$class          : 'UsernamePasswordMultiBinding', credentialsId: 'cloudfoundry',
@@ -41,6 +41,6 @@ node {
                 ./cf target -o bertjan-demo -s development
                 ./cf push
                '''
-        }
+        }**/
     }
 }
